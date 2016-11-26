@@ -71,7 +71,7 @@ class Gazer:
   def get_status(self, data):
     return self.classifier.predict_proba(data)
 
-  def check_this_out(self, data):
+  def get_prediction_for_data(self, data):
     data_df = pd.read_csv(data)
     data_df['is_train'] = [False for i in range(len(data_df))]
     x_test = data_df[list(self.features)].values

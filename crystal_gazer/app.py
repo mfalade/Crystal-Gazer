@@ -22,8 +22,12 @@ def healthcheck():
 
 @app.route('/get_prediction', methods=['POST'])
 def get_prediction():
-    csvFile = request.files["csvFile"]
-    file_name = csvFile.filename
-    verdict = crystal_gazer.check_this_out(csvFile.stream)
+    csv_file = request.files["csvFile"]
+    file_name = csv_file.filename
+    verdict = crystal_gazer.get_prediction_for_data(csv_file.stream)
     results = verdict.values.tolist()
-    return render_template("result.html", file_name=file_name, results=results)
+    return render_template(
+        "result.html", 
+        file_name=file_name, 
+        results=results
+    )
