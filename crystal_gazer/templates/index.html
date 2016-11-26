@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>Crystal Gazer</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    <div class="container app-container">
+      <div class="row">
+        <div class="twelve columns">
+          <div class="header-container bottom-border ececec">
+            <h4>Crystal Gazer</h4>
+          </div>
+        </div>
+      </div>
+        {# <hr> #}
+      <div class="row">
+        <div class="twelve columns">
+          <div class="description">
+            <h1>Welcome</h1>
+            <p class="white">
+              This is the thing that we are all talking about
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <div class="form-container">
+            <form class="form" method="post" action="/predict">
+              <div class="row">
+                <div class="twelve columns">
+                  <div class="input-container">
+                    <input type="text" name="completed" class="input-field five columns" placeholder="Completed">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="twelve columns">
+                  <div class="input-container">
+                    <input type="text" name="completed" class="input-field five columns" placeholder="Completed">
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit"> PREDICT </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
