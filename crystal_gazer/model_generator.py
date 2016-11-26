@@ -32,7 +32,7 @@ num_cols = list(set(list(fullData.columns)) - set(non_num_cols))
 
 
 number = LabelEncoder()
-fullData["Stage"] = number.fit_transform(fullData["Stage"].astype('str'))
+fullData['Stage'] = number.fit_transform(fullData['Stage'].astype('str'))
 
 train = fullData[fullData['Type'] == 'Train']
 test = fullData[fullData['Type'] == 'Test']
@@ -44,9 +44,9 @@ features = list(set(list(fullData.columns)) - set(noises))
 
 
 x_train = Train[list(features)].values
-y_train = Train["Stage"].values
+y_train = Train['Stage'].values
 x_validate = Validate[list(features)].values
-y_validate = Validate["Stage"].values
+y_validate = Validate['Stage'].values
 x_test = test[list(features)].values
 
 
@@ -62,9 +62,10 @@ roc_auc = auc(fpr, tpr)
 
 print(roc_auc)
 
+import pdb; pdb.set_trace()
 
 final_status = rf.predict_proba(x_test)
-test["Stage"] = final_status[:,1]
+test['Stage'] = final_status[:,1]
 
 
 test.to_csv(output_file, columns=['S/N', 'Stage', 'Bootcamp'])
