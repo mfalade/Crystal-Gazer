@@ -30,8 +30,6 @@ def cleanup_data(dataframe):
       dataframe['Bootcamp'] = 0
 
     return dataframe
-    
-
 
 
 if __name__ == '__main__':
@@ -49,5 +47,9 @@ if __name__ == '__main__':
   test_data.to_csv('resources/clean/hackathon_test_data_{now}.csv'.format(now=now))
   training_data.to_csv('resources/clean/hackathon_train_data_{now}.csv'.format(now=now))
 
-  print("DATA HAS BEEN CLEANED UP FOR >>>> {now}.".format(now=now))
-  print('Check your resources/clean dir to view em.')
+  print('*' * 100)
+  print("DATA HAS BEEN CLEANED UP.")
+  print("SOURCE FILES HAVE BEEN GENERATED.")
+  print('Check your resources/clean directory for files ending with "{now}"'.format(now=now))
+  print('Cheers')
+  print('*' * 100)
