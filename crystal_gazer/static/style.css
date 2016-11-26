@@ -1,0 +1,105 @@
+.header-container {
+	padding: 10px;
+	font-weight: 200;
+	font-style: italic;
+	position: relative;
+	/*background-color: rgba(51,89,223,1);*/
+	color: white;
+}
+
+.app-container {
+	margin-top: 0;
+}
+
+.header-container h4 {
+	margin: 0;
+}
+
+.border {
+	border: 1px solid;
+}
+
+.bottom-border {
+    display: table;
+    width: 100%;
+	border-bottom: 1px solid;
+    padding-bottom: 10px;
+    border-bottom-color: #ececec;
+}
+
+.bottom-border h5 {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    padding-left: 10px;
+    letter-spacing: 2px;
+}
+
+.ececec {
+	color: #ececec;
+}
+
+.description {
+	background-color: rgba(51,89,223, 0.8);
+	padding: 10px;
+}
+
+.description h1 {
+	color: white;
+	font-size: 80px;
+	font-weight: 200;
+}
+
+.white {
+	color: white;
+}
+
+.input-container {
+	/*border:;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+
+}
+
+.before-inner-container {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+}
+
+.form-container {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.predict-button {
+	background-color: rgba(51,89,223,1) !important;
+	border-color: rgba(51,89,223,1) !important;
+	height: 50px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+#nav {
+    background-color: rgba(51,89,223,1) !important;
+    display: table;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    right: 0;
+    top: 0;
+    left: 0;
+}
+
+#nav span {
+    display: table-cell;
+    padding-left: 10px;
+    width: 100%;
+    vertical-align: middle;
+    color: #fffff0;
+    font-size: 18px;
+}
