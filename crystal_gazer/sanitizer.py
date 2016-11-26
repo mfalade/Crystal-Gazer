@@ -9,7 +9,7 @@ def get_dataframe(file_path):
   return pd.read_csv('resources/dirty/hackathon_data.csv')
 
 def convert_percentage_string_to_float(some_str):
-    """The name says it all.
+    """Convert given string input to float.
 
     Arguments:
       some_str: (str) A string of the format '80.00%'

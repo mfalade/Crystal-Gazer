@@ -62,6 +62,7 @@ roc_auc = auc(fpr, tpr)
 
 print(roc_auc)
 
+import pdb; pdb.set_trace()
 
 final_status = rf.predict_proba(x_test)
 test["Bootcamp"] = final_status[:,1]
