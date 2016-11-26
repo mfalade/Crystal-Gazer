@@ -11,8 +11,8 @@ from sklearn.preprocessing import LabelEncoder
 
 base_path = 'resources/{file_name}'
 output_file = base_path.format(file_name='results/predictions_on_test_data.csv')
-noises = ['Stage', 'S/N', 'Type', 'Joined Proctor on']
-non_num_cols = ['S/N', 'Stage', 'Joined Proctor on', 'RowNo']
+noises = ['S/N', 'Type', 'Joined Proctor on', 'Bootcamp']
+non_num_cols = ['S/N', 'Joined Proctor on', 'RowNo']
 
 def get_dataframe_for(data_class):
     file_name = 'clean/andela_{}_data.csv'.format(data_class.lower())
@@ -32,7 +32,7 @@ num_cols = list(set(list(fullData.columns)) - set(non_num_cols))
 
 
 number = LabelEncoder()
-fullData['Stage'] = number.fit_transform(fullData['Stage'].astype('str'))
+fullData["Bootcamp"] = number.fit_transform(fullData["Bootcamp"].astype('str'))
 
 train = fullData[fullData['Type'] == 'Train']
 test = fullData[fullData['Type'] == 'Test']
@@ -44,9 +44,9 @@ features = list(set(list(fullData.columns)) - set(noises))
 
 
 x_train = Train[list(features)].values
-y_train = Train['Stage'].values
+y_train = Train["Bootcamp"].values
 x_validate = Validate[list(features)].values
-y_validate = Validate['Stage'].values
+y_validate = Validate["Bootcamp"].values
 x_test = test[list(features)].values
 
 
@@ -65,7 +65,7 @@ print(roc_auc)
 import pdb; pdb.set_trace()
 
 final_status = rf.predict_proba(x_test)
-test['Stage'] = final_status[:,1]
+test["Bootcamp"] = final_status[:,1]
 
 
-test.to_csv(output_file, columns=['S/N', 'Stage', 'Bootcamp'])
+test.to_csv(output_file, columns=['S/N', 'Bootcamp'])

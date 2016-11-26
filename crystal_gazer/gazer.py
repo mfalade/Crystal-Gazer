@@ -65,6 +65,7 @@ class Gazer:
     status = self.get_status(self.x_validate)
     fpr, tpr, _ = roc_curve(self.y_validate, status[:,1], pos_label=1)
     self.roc_auc = auc(fpr, tpr)
+    import pdb; pdb.set_trace()
 
   def get_status(self, data):
     return self.classifier.predict_proba(data)
