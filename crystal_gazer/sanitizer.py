@@ -1,3 +1,4 @@
+from datetime import datetime
 from random import choice
 
 import pandas as pd
@@ -5,8 +6,6 @@ import pandas as pd
 
 DIRTY_DATA_FILE = 'resources/dirty/hackathon_data.csv'
 
-def get_dataframe(file_path):
-  return pd.read_csv('resources/dirty/hackathon_data.csv')
 
 def convert_percentage_string_to_float(some_str):
     """Convert given string input to float.
@@ -19,20 +18,36 @@ def convert_percentage_string_to_float(some_str):
     return float(some_str.replace('%', '')) / 100
 
 
-def sanitize_data():
-    dirty_data_df = get_dataframe(DIRTY_DATA_FILE)
-    dirty_data_df['% Score'] = dirty_data_df['% Score'].apply(convert_percentage_string_to_float)
-    dirty_data_df['Bootcamp'] = dirty_data_df['Bootcamp'].apply(int)
+def cleanup_data(dataframe):
+    df_cols = dataframe.columns.values
 
-    training_data = dirty_data_df[: 440]
-    test_data = dirty_data_df[440:]
+    if '% Score' in df_cols:
+      dataframe['% Score'] = dataframe['% Score'].apply(convert_percentage_string_to_float)
 
-    dirty_data_df.to_csv('resources/clean/hackathon_data.csv')
-    test_data.to_csv('resources/clean/andela_test_data.csv')
-    training_data.to_csv('resources/clean/andela_train_data.csv')
+    if 'Bootcamp' in df_cols:
+      dataframe['Bootcamp'] = dataframe['Bootcamp'].apply(int)
+    else:
+      dataframe['Bootcamp'] = 0
 
-    print("DATA HAS BEEN CLEANED UP.")
-    print('Check your resources/clean dir to view em.')
+    return dataframe
+    
 
 
-sanitize_data()
+
+if __name__ == '__main__':
+  now = datetime.now().microsecond
+  dataframe = pd.read_csv(DIRTY_DATA_FILE)
+
+  dataframe = cleanup_data(dataframe)
+
+  split_point = int(len(dataframe) * 0.7)
+
+  training_data = dataframe[:split_point]
+  test_data = dataframe[split_point:]
+
+  dataframe.to_csv('resources/clean/hackathon_full_data_{now}.csv'.format(now=now))
+  test_data.to_csv('resources/clean/hackathon_test_data_{now}.csv'.format(now=now))
+  training_data.to_csv('resources/clean/hackathon_train_data_{now}.csv'.format(now=now))
+
+  print("DATA HAS BEEN CLEANED UP FOR >>>> {now}.".format(now=now))
+  print('Check your resources/clean dir to view em.')
