@@ -4,7 +4,7 @@ from flask import (Flask, redirect, render_template, request, url_for)
 from .gazer import Gazer
 
 app = Flask(__name__)
-app.debug = True
+
 crystal_gazer = Gazer()
 
 @app.route('/')

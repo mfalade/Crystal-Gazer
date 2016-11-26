@@ -130,3 +130,13 @@
     font-size: 14px;
     color: rgba(51,89,223,1)!important;
 }
+
+.brand {
+    text-decoration: none;
+    color: #222;
+}
+
+.brand:hover {
+    color: rgba(51,89,223,1)!important;
+    text-decoration: none;
+}

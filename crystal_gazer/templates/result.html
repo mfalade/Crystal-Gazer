@@ -13,7 +13,7 @@
           <div class="bottom-border">
             <div class="nine columns sameline">
                 <img src="{{url_for('static', filename='andela-logo.png')}}" width="50px">
-                <h5>CRYSTAL GAZER</h5>
+                <a href="/" class="brand"><h5>CRYSTAL GAZER</h5></a>
             </div>
             <div class="three columns float-right">
                 <br />
@@ -29,9 +29,10 @@
                 <thead>
                     <tr>
                     <th>S/N</th>
-                    <th>Score</th>
+                    <th>Score(x/200)</th>
                     <th>% Score</th>
                     <th>Bootcamp</th>
+                    <th>Verdict</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +40,8 @@
                     <tr>
                         {% for field in result %} 
                             <td>{{ field }}</td>
-                        {% endfor %}                        
+                        {% endfor %} 
+                        <td>--</td>                      
                     </tr>
                     {% endfor %}
                 </tbody>

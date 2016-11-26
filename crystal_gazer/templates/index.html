@@ -4,8 +4,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container app-container">
@@ -14,7 +12,7 @@
         <div class="bottom-border">
             <div class="nine columns sameline">
                 <img src="{{url_for('static', filename='andela-logo.png')}}" width="50px">
-                <h5>CRYSTAL GAZER</h5>
+                <a href="/" class="brand"><h5>CRYSTAL GAZER</h5></a>
             </div>
             <div class="three columns float-right">
                 <input type="file" value="Upload File" class="pretty-btn" id="fileSelect" name="csvFile" accept=".csv" />
