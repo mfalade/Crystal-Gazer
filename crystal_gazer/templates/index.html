@@ -8,43 +8,140 @@
   <body>
     <div class="container app-container">
       <div class="row">
-        <div class="twelve columns">
-          <div class="header-container bottom-border ececec">
-            <h4>Crystal Gazer</h4>
-          </div>
+        <div class="bottom-border">
+            <img src="{{url_for('static', filename='andela-logo.png')}}" width="50px">
+            <h5>CRYSTAL GAZER</h5>
         </div>
-      </div>
-        {# <hr> #}
-      <div class="row">
-        <div class="twelve columns">
-          <div class="description">
-            <h1>Welcome</h1>
-            <p class="white">
-              This is the thing that we are all talking about
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="twelve columns">
           <div class="form-container">
-            <form class="form" method="post" action="/predict">
+            <form class="form" method="post" action="/get_prediction">
               <div class="row">
                 <div class="twelve columns">
                   <div class="input-container">
-                    <input type="text" name="completed" class="input-field five columns" placeholder="Completed">
+                    <input type="text" name="name" class="input-field three columns" placeholder="Name" required>
+                    <input type="number" name="score" class="input-field three columns" placeholder="Score" min="0" max="200" required>
+                    <input type="number" name="score-percent" class="input-field three columns" placeholder="% Score" min="0" max="100" required>
+                    <input type="number" name="completed" class="input-field three columns" placeholder="% Completed" min="0" max="100" required>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="twelve columns">
-                  <div class="input-container">
-                    <input type="text" name="completed" class="input-field five columns" placeholder="Completed">
+                <div class="six columns">
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m1-s1" class="input-field three columns" placeholder="M1-S1" min="0" required>
+                        <input type="number" name="m1-s1-wrong" class="input-field three columns" placeholder="M1-S1 Wrong" min="0" required>
+                        <input type="number" name="m1-s1-tries" class="input-field three columns" placeholder="M1-S1 Tries" min="0" required>
+                        <input type="number" name="m1-s2-tries" class="input-field three columns" placeholder="M1-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m2-s1" class="input-field three columns" placeholder="M2-S1">
+                        <input type="number" name="m2-s1-wrong" class="input-field three columns" placeholder="M2-S1 Wrong" min="0" required>
+                        <input type="number" name="m2-s1-tries" class="input-field three columns" placeholder="M2-S1 Tries" min="0" required>
+                        <input type="number" name="m2-s2-tries" class="input-field three columns" placeholder="M2-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m3-s1" class="input-field three columns" placeholder="M3-S1">
+                        <input type="number" name="m3-s1-wrong" class="input-field three columns" placeholder="M3-S1 Wrong" min="0" required>
+                        <input type="number" name="m3-s1-tries" class="input-field three columns" placeholder="M3-S1 Tries" min="0" required>
+                        <input type="number" name="m3-s2-tries" class="input-field three columns" placeholder="M3-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m4-s1" class="input-field three columns" placeholder="M4-S1">
+                        <input type="number" name="m4-s1-wrong" class="input-field three columns" placeholder="M4-S1 Wrong" min="0" required>
+                        <input type="number" name="m4-s1-tries" class="input-field three columns" placeholder="M4-S1 Tries" min="0" required>
+                        <input type="number" name="m4-s2-tries" class="input-field three columns" placeholder="M4-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m5-s1" class="input-field three columns" placeholder="M5-S1">
+                        <input type="number" name="m5-s1-wrong" class="input-field three columns" placeholder="M5-S1 Wrong" min="0" required>
+                        <input type="number" name="m5-s1-tries" class="input-field three columns" placeholder="M5-S1 Tries" min="0" required>
+                        <input type="number" name="m5-s2-tries" class="input-field three columns" placeholder="M5-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="six columns">
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m6-s1" class="input-field three columns" placeholder="M6-S1">
+                        <input type="number" name="m6-s1-wrong" class="input-field three columns" placeholder="M6-S1 Wrong" min="0" required>
+                        <input type="number" name="m6-s1-tries" class="input-field three columns" placeholder="M6-S1 Tries" min="0" required>
+                        <input type="number" name="m6-s2-tries" class="input-field three columns" placeholder="M6-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m7-s1" class="input-field three columns" placeholder="M7-S1">
+                        <input type="number" name="m7-s1-wrong" class="input-field three columns" placeholder="M7-S1 Wrong" min="0" required>
+                        <input type="number" name="m7-s1-tries" class="input-field three columns" placeholder="M7-S1 Tries" min="0" required>
+                        <input type="number" name="m7-s2-tries" class="input-field three columns" placeholder="M7-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m8-s1" class="input-field three columns" placeholder="M8-S1">
+                        <input type="number" name="m8-s1-wrong" class="input-field three columns" placeholder="M8-S1 Wrong" min="0" required>
+                        <input type="number" name="m8-s1-tries" class="input-field three columns" placeholder="M8-S1 Tries" min="0" required>
+                        <input type="number" name="m8-s2-tries" class="input-field three columns" placeholder="M8-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m9-s1" class="input-field three columns" placeholder="M9-S1">
+                        <input type="number" name="m9-s1-wrong" class="input-field three columns" placeholder="M9-S1 Wrong" min="0" required>
+                        <input type="number" name="m9-s1-tries" class="input-field three columns" placeholder="M9-S1 Tries" min="0" required>
+                        <input type="number" name="m9-s2-tries" class="input-field three columns" placeholder="M9-S2 Tries" min="0" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="twelve columns before-inner-container">
+                      <div class="twelve columns input-container">
+                        <input type="number" name="m10-s1" class="input-field three columns" placeholder="M10-S1">
+                        <input type="number" name="m10-s1-wrong" class="input-field three columns" placeholder="M10-S1 Wrong" min="0" required>
+                        <input type="number" name="m10-s1-tries" class="input-field three columns" placeholder="M10-S1 Tries" min="0" required>
+                        <input type="number" name="m10-s2-tries" class="input-field three columns" placeholder="M10-S2 Tries" min="0" required>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               
-              <button type="submit"> PREDICT </button>
+              
+              
+              <div class="row">
+                <div class="twelve columns">
+                  <div class="input-container">
+                    <button type="submit" class="twelve columns button-primary predict-button"> PREDICT </button>
+                  </div>
+                </div>
+              </div>
+              
             </form>
           </div>
         </div>
