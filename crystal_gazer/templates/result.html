@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Crystal Gazer</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container app-container">
+      <div class="row">
+          <div class="bottom-border">
+            <div class="nine columns sameline">
+                <img src="{{url_for('static', filename='andela-logo.png')}}" width="50px">
+                <h5>CRYSTAL GAZER</h5>
+            </div>
+            <div class="three columns float-right">
+                <br />
+                <h6>Complete...</h6>
+            </div>
+        </div>
+        <div>
+            <br />
+            Results for <span class="file_name">{{ file_name }}</span> here.
+            <hr />
+
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                    <th>S/N</th>
+                    <th>Score</th>
+                    <th>% Score</th>
+                    <th>Bootcamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %} 
+                    <tr>
+                        {% for field in result %} 
+                            <td>{{ field }}</td>
+                        {% endfor %}                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+

@@ -103,3 +103,30 @@
     color: #fffff0;
     font-size: 18px;
 }
+
+.float-right {
+    text-align: right;
+}
+
+.sameline {
+    display: inline-block;
+}
+
+.sameline img {
+    float: left;
+}
+
+.sameline h5 {
+    padding-top: 10px;
+}
+
+.sameline img:after {
+    float: none;
+    clear: both;
+}
+
+.file_name {
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(51,89,223,1)!important;
+}

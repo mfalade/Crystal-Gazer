@@ -11,8 +11,9 @@ from sklearn.preprocessing import LabelEncoder
 
 
 output_file = 'resources/results/predictions_on_test_data.csv'
-noises = ['Bootcamp', 'S/N', 'Type', 'Joined Proctor on']
-non_num_cols = ['S/N', 'Bootcamp', 'Joined Proctor on', 'RowNo']
+noises = ['Bootcamp', 'S/N', 'Type', 'Joined Proctor on', 'Row']
+non_num_cols = ['S/N', 'Bootcamp', 'Joined Proctor on']
+target_cols = ['S/N', 'Score', '% Score', 'Bootcamp']
 number = LabelEncoder()
 
 
@@ -71,7 +72,9 @@ class Gazer:
     return self.classifier.predict_proba(data)
 
   def check_this_out(self, data):
-    # convert data to df. 
-    return {
-      'status': 200
-    }
+    data_df = pd.read_csv(data)
+    data_df['is_train'] = [False for i in range(len(data_df))]
+    x_test = data_df[list(self.features)].values
+    verdict = self.get_status(x_test)
+    data_df["Bootcamp"] = verdict[:,1]
+    return data_df[target_cols]
