@@ -1,5 +1,6 @@
 import json
 import csv
+import datetime
 from flask import (Flask, redirect, render_template, request, url_for)
 
 from .gazer import Gazer
@@ -25,7 +26,9 @@ def healthcheck():
 def get_prediction():
     csv_file = request.files["csvFile"]
     file_name = csv_file.filename
+    start = datetime.datetime.now()
     verdict, csv_data = crystal_gazer.get_prediction_for_data(csv_file.stream)
+    end = datetime.datetime.now()
     results = verdict.values.tolist()
     correct = 0
     positives = 0
@@ -57,5 +60,6 @@ def get_prediction():
         results=results,
         accuracy=round(accuracy, 2),
         false_negatives=round(false_negatives, 2),
-        false_positives=round(false_positives, 2)
+        false_positives=round(false_positives, 2),
+        time=(end-start)
     )

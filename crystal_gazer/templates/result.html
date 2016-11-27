@@ -24,14 +24,17 @@
             Prediction results for <span class="file_name">{{ file_name }}</span> here.
             <br />
             <div class="twelve columns">
-                <div class="four columns">
+                <div class="three columns">
                     Accuracy: {{ accuracy }}%
                 </div>
-                <div class="four columns">
+                <div class="three columns">
                     False Positives: {{ false_positives }}%
                 </div>
-                <div class="four columns">
+                <div class="three columns">
                     False Negatives: {{ false_negatives }}%
+                </div>
+                <div class="three columns">
+                    Time: {{ time }}
                 </div>
             </div>
             <hr />
