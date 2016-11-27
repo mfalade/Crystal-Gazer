@@ -15,6 +15,7 @@ def convert_percentage_string_to_float(some_str):
     Returns:
       result: (float) A float of the format 0.88
     """
+    if type(some_str) == float: return some_str
     return float(some_str.replace('%', '')) / 100
 
 

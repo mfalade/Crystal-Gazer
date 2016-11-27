@@ -34,8 +34,8 @@ def get_prediction():
 
     accuracy = (correct / len(results)) * 100
     return render_template(
-        "result.html", 
-        file_name=file_name, 
+        "result.html",
+        file_name=file_name,
         results=results,
         accuracy=round(accuracy, 2)
     )

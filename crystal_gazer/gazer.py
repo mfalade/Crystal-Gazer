@@ -10,6 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import auc, roc_curve
 from sklearn.preprocessing import LabelEncoder
 
+from .sanitizer import cleanup_data
+
 
 output_file = 'resources/results/predictions_on_test_data.csv'
 noises = ['Bootcamp', 'S/N', 'Type', 'Joined Proctor on', 'Row']
@@ -34,7 +36,7 @@ class Gazer:
     self.data = self.get_dataframe_from_file()
     self.num_cols = list(set(list(self.data.columns)) - set(non_num_cols))
     self.data['Bootcamp'] = number.fit_transform(self.data['Bootcamp'].astype('str'))
-  
+
     self.start_training()
     self.set_classifier()
     self.set_roc()
@@ -74,9 +76,10 @@ class Gazer:
 
   def get_prediction_for_data(self, data):
     data_df = pd.read_csv(data)
-    csv = copy.deepcopy(data_df)
-    data_df['is_train'] = [False for i in range(len(data_df))]
-    x_test = data_df[list(self.features)].values
+    sanitized_df = cleanup_data(data_df)
+    csv = copy.deepcopy(sanitized_df)
+    sanitized_df['is_train'] = [False for i in range(len(sanitized_df))]
+    x_test = sanitized_df[list(self.features)].values
     verdict = self.get_status(x_test)
-    data_df["Bootcamp"] = verdict[:,1]
-    return data_df[target_cols], csv
+    sanitized_df["Bootcamp"] = verdict[:,1]
+    return sanitized_df[target_cols], csv
