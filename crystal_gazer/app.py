@@ -32,7 +32,7 @@ def get_prediction():
         if csv_data["Bootcamp"][x] == int(round(results[x][3])):
             correct = correct + 1
 
-    accuracy = (correct / len(results)) * 100
+    accuracy = (float(correct) / float(len(results))) * 100
     return render_template(
         "result.html", 
         file_name=file_name, 
