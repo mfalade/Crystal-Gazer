@@ -140,3 +140,15 @@
     color: rgba(51,89,223,1)!important;
     text-decoration: none;
 }
+
+.success {
+    color: #43B581;
+}
+
+.failure {
+    color: #F04848;
+}
+
+#submitBtn {
+    margin-top: 70px;
+}

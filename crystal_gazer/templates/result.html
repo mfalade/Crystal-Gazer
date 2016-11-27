@@ -4,8 +4,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
     <div class="container app-container">
@@ -32,18 +31,26 @@
                     <tr>
                     <th>S/N</th>
                     <th>Score(x/200)</th>
-                    <th>% Score</th>
-                    <th>Bootcamp</th>
+                    <th>Score(%)</th>
+                    <th>Bootcamp Probablity</th>
                     <th>Verdict</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for result in results %} 
                     <tr>
-                        {% for field in result %} 
-                            <td>{{ field }}</td>
-                        {% endfor %} 
-                        <td>--</td>                      
+                        {% for field in result %}
+                            {% if loop.index == 3 %}
+                                <td>{{ field  * 100 }}</td>
+                            {% else %}
+                                <td>{{ field }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        {% if result[3] > 0.3 %}
+                            <td><i class="material-icons success">check_circle</i></td>
+                        {% else %}
+                            <td><i class="material-icons failure">not_interested</i></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -51,7 +58,6 @@
         </div>
       </div>
     </div>
-
   </body>
 </html>
 
