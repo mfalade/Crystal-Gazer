@@ -37,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for result in results %} 
+                    {% for result in results %}
                     <tr>
                         {% for field in result %}
                             {% if loop.index == 3 %}
@@ -46,7 +46,7 @@
                                 <td>{{ field }}</td>
                             {% endif %}
                         {% endfor %}
-                        {% if result[3] > 0.3 %}
+                        {% if result[3] | round %}
                             <td><i class="material-icons success">check_circle</i></td>
                         {% else %}
                             <td><i class="material-icons failure">not_interested</i></td>
@@ -60,4 +60,3 @@
     </div>
   </body>
 </html>
-
