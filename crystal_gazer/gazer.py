@@ -73,6 +73,7 @@ class Gazer:
 
   def get_prediction_for_data(self, data):
     data_df = pd.read_csv(data)
+    sa
     data_df['is_train'] = [False for i in range(len(data_df))]
     x_test = data_df[list(self.features)].values
     verdict = self.get_status(x_test)
