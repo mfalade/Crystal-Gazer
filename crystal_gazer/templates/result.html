@@ -23,12 +23,23 @@
             <br />
             Prediction results for <span class="file_name">{{ file_name }}</span> here.
             <br />
-            Accuracy: {{ accuracy }}%
+            <div class="twelve columns">
+                <div class="four columns">
+                    Accuracy: {{ accuracy }}%
+                </div>
+                <div class="four columns">
+                    False Positives: {{ false_positives }}%
+                </div>
+                <div class="four columns">
+                    False Negatives: {{ false_negatives }}%
+                </div>
+            </div>
             <hr />
 
             <table class="u-full-width">
                 <thead>
                     <tr>
+                    <th></th>
                     <th>S/N</th>
                     <th>Score(x/200)</th>
                     <th>Score(%)</th>
@@ -39,6 +50,7 @@
                 <tbody>
                     {% for result in results %}
                     <tr>
+                        <td>{{ loop.index }}</td>
                         {% for field in result %}
                             {% if loop.index == 3 %}
                                 <td>{{ field  * 100 }}</td>
