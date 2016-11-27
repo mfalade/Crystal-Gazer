@@ -1,4 +1,5 @@
 import json
+import csv
 from flask import (Flask, redirect, render_template, request, url_for)
 
 from .gazer import Gazer
@@ -24,10 +25,17 @@ def healthcheck():
 def get_prediction():
     csv_file = request.files["csvFile"]
     file_name = csv_file.filename
-    verdict = crystal_gazer.get_prediction_for_data(csv_file.stream)
+    verdict, csv_data = crystal_gazer.get_prediction_for_data(csv_file.stream)
     results = verdict.values.tolist()
+    correct = 0
+    for x in range(0, len(results)):
+        if csv_data["Bootcamp"][x] == int(round(results[x][3])):
+            correct = correct + 1
+
+    accuracy = (correct / len(results)) * 100
     return render_template(
         "result.html", 
         file_name=file_name, 
-        results=results
+        results=results,
+        accuracy=round(accuracy, 2)
     )

@@ -1,5 +1,6 @@
 import random
 import os
+import copy
 
 import numpy as np
 import pandas as pd
@@ -73,9 +74,9 @@ class Gazer:
 
   def get_prediction_for_data(self, data):
     data_df = pd.read_csv(data)
-    sa
+    csv = copy.deepcopy(data_df)
     data_df['is_train'] = [False for i in range(len(data_df))]
     x_test = data_df[list(self.features)].values
     verdict = self.get_status(x_test)
     data_df["Bootcamp"] = verdict[:,1]
-    return data_df[target_cols]
+    return data_df[target_cols], csv
